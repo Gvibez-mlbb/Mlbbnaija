@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Test-mode rules: open read/write for the mlbb-naija collection only.
+    // Fine for friends testing; before a public launch, add real auth checks.
+    match /mlbb-naija/{document} {
+      allow read, write: if true;
+    }
+  }
+}
